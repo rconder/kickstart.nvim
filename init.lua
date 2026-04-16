@@ -600,7 +600,34 @@ require('lazy').setup({
       --  See `:help lsp-config` for information about keys and how to configure
       ---@type table<string, vim.lsp.Config>
       local servers = {
+<<<<<<< Updated upstream
         -- clangd = {},
+=======
+        clangd = {
+          cmd = {
+            'clangd',
+            '--background-index',
+            '--clang-tidy',
+            '--header-insertion=iwyu',
+            '--completion-style=detailed',
+            '--function-arg-placeholders',
+            '--fallback-style=llvm',
+            '--header-insertion-decorators',
+          },
+          init_options = {
+            usePlaceholders = true,
+            completeUnimported = true,
+            clangdFileStatus = true,
+          },
+          capabilities = {
+            textDocument = {
+              semanticTokens = {
+                requests = { full = true, range = false },
+              },
+            },
+          },
+        },
+>>>>>>> Stashed changes
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -874,8 +901,12 @@ require('lazy').setup({
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
+<<<<<<< Updated upstream
       -- ensure basic parser are installed
       local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+=======
+      local parsers = { 'bash', 'c', 'cpp', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+>>>>>>> Stashed changes
       require('nvim-treesitter').install(parsers)
 
       ---@param buf integer
